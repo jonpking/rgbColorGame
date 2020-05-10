@@ -46,6 +46,10 @@ resetButon.addEventListener("click", function () {
     pickedColor = pickColor();
     //change colorDisplay to match pickedColor
     colorDisplay.textContent = pickedColor;
+    //update messageDisplay when resetting game
+    messageDisplay.textContent = "";
+    //update reset button text when resetting game
+    this.textContent = "New Colors";
     //change colors of squares
     for (let i = 0; i < squares.length; i++) {
         squares[i].style.backgroundColor = colors[i];
@@ -109,7 +113,3 @@ function randomColor() {
     const b = Math.floor(Math.random() * 256);
     return "rgb(" + r + ", " + g + ", " + b + ")";
 }
-
-
-//after clicking play again text should change back to new colors
-//after clicking play again or new colors, correct or try again text should disappear
