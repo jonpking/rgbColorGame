@@ -1,20 +1,13 @@
-const colors = [
-    "rgb(255, 0, 0)",
-    "rgb(0, 255, 0)",
-    "rgb(0, 0, 255)",
-    "rgb(255, 255, 0)",
-    "rgb(255, 0, 255)",
-    "rgb(0, 255, 255)",
-];
+const colors = generateRandomColors(6);
 
 const squares = document.querySelectorAll(".square");
-const pickedColor = colors[3];
+const pickedColor = pickColor();
 const colorDisplay = document.getElementById("colorDisplay");
 const messageDisplay = document.querySelector("#message");
 
 colorDisplay.textContent = pickedColor;
 
-for (var i = 0; i < squares.length; i++) {
+for (let i = 0; i < squares.length; i++) {
     //add initial colors to squares
     squares[i].style.backgroundColor = colors[i];
 
@@ -35,8 +28,35 @@ for (var i = 0; i < squares.length; i++) {
 
 function changeColors(color) {
     //loop through all squares
-    for (var i = 0; i < squares.length; i++) {
+    for (let i = 0; i < squares.length; i++) {
         //change each color to match given color
         squares[i].style.backgroundColor = color;
     }
+}
+
+function pickColor() {
+    const random = Math.floor(Math.random() * colors.length)
+    return colors[random];
+}
+
+function generateRandomColors(num) {
+    //make an array
+    const arr = [];
+    //repeat num times
+    for (let i = 0; i < num; i++) {
+        //get random color and push into arr
+        arr.push(randomColor());
+    }
+    //return that array
+    return arr;
+}
+
+function randomColor() {
+    //pick red from 0 - 255
+    const r = Math.floor(Math.random() * 256);
+    //pick green from 0 - 255
+    const g = Math.floor(Math.random() * 256);
+    //pick blue from 0 - 255
+    const b = Math.floor(Math.random() * 256);
+    return "rgb(" + r + ", " + g + ", " + b + ")";
 }
