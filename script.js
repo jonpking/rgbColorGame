@@ -18,6 +18,7 @@ resetButon.addEventListener("click", function () {
     for (let i = 0; i < squares.length; i++) {
         squares[i].style.backgroundColor = colors[i];
     }
+    h1.style.backgroundColor = "#232323";
 });
 
 colorDisplay.textContent = pickedColor;
@@ -32,6 +33,7 @@ for (let i = 0; i < squares.length; i++) {
         //compare color of clicked square to pickedColor
         if (clickedColor === pickedColor) {
             messageDisplay.textContent = "Correct!";
+            resetButon.textContent = "Play Again?";
             changeColors(clickedColor);
             h1.style.backgroundColor = clickedColor;
         } else {
@@ -75,3 +77,7 @@ function randomColor() {
     const b = Math.floor(Math.random() * 256);
     return "rgb(" + r + ", " + g + ", " + b + ")";
 }
+
+
+//after clicking play again text should change back to new colors
+//after clicking play again or new colors, correct or try again text should disappear
