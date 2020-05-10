@@ -1,17 +1,30 @@
-const colors = generateRandomColors(6);
+let colors = generateRandomColors(6);
 
 const squares = document.querySelectorAll(".square");
-const pickedColor = pickColor();
+let pickedColor = pickColor();
 const colorDisplay = document.getElementById("colorDisplay");
 const messageDisplay = document.querySelector("#message");
 const h1 = document.querySelector("h1");
+const resetButon = document.querySelector("#reset");
+
+resetButon.addEventListener("click", function () {
+    //generate all new colors
+    colors = generateRandomColors(6);
+    //pick a new random color from array
+    pickedColor = pickColor();
+    //change colorDisplay to match pickedColor
+    colorDisplay.textContent = pickedColor;
+    //change colors of squares
+    for (let i = 0; i < squares.length; i++) {
+        squares[i].style.backgroundColor = colors[i];
+    }
+});
 
 colorDisplay.textContent = pickedColor;
 
 for (let i = 0; i < squares.length; i++) {
     //add initial colors to squares
     squares[i].style.backgroundColor = colors[i];
-
     //add click listeners to squares
     squares[i].addEventListener("click", function () {
         //grab color of clicked square
